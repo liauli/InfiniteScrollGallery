@@ -29,11 +29,16 @@ class APIServiceImpl: APIService {
     
     let decoder = JSONDecoder()
     decoder.keyDecodingStrategy = .convertFromSnakeCase
+    
+    print(url.absoluteString)
         
     return urlSession.dataTaskPublisher(for: url)
       .map(\.data)
       .decode(type: GalleryResponse.self, decoder: decoder)
-      .mapError { _ in ApiError.failToDecode }
+      .mapError { error in
+        print(error)
+        return ApiError.failToDecode
+      }
       .eraseToAnyPublisher()
   }
 }
