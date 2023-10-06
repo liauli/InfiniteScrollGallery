@@ -4,7 +4,7 @@
 //
 //  Created by Aulia Nastiti on 06/10/23.
 //
-
+import Kingfisher
 import SwiftUI
 
 struct GalleryView: View {
@@ -18,7 +18,9 @@ struct GalleryView: View {
   ]
   
   var body: some View {
-      scrollView
+      scrollView.onAppear {
+        viewModel.initialLoad()
+      }
       if viewModel.viewState.isLoading {
         ProgressView()
       }
@@ -31,8 +33,21 @@ struct GalleryView: View {
           Array(viewModel.viewState.gallery.enumerated()), id: \.element.id
         ) { index, image in
           ZStack {
-            Color.blue.aspectRatio(1, contentMode: .fill)
-            Text(String(image.id))
+            KFImage(URL(string: "https://www.artic.edu/iiif/2/\(image.imageId ?? "")/full/200,/0/default.jpg")!)
+              .resizable()
+              .backgroundDecode()
+              .onFailure({ error in
+                print("\(index) \(error)")
+              })
+              .resizable()
+              .placeholder {
+                Image("brokenImage")
+                  .resizable()
+                  .frame(width: 50, height: 50)
+              }
+              .fade(duration: 0.25)
+              .aspectRatio(1, contentMode: .fill)
+            
           }.onAppear {
             viewModel.checkIfLoadNext(image.id)
           }
