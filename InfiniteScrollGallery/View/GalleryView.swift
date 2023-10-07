@@ -11,6 +11,8 @@ struct GalleryView: View {
   @StateObject private var viewModel: GalleryViewModel = ViewModelProvider.instance
     .provideGalleryViewModel()
   
+  private let imageUrlPath = "/full/200,/0/default.jpg"
+  
   private let columns = [
     GridItem(.flexible(minimum: 40)),
     GridItem(.flexible(minimum: 40)),
@@ -33,12 +35,10 @@ struct GalleryView: View {
           Array(viewModel.viewState.gallery.enumerated()), id: \.element.id
         ) { index, image in
           ZStack {
-            KFImage(URL(string: "https://www.artic.edu/iiif/2/\(image.imageId ?? "")/full/200,/0/default.jpg")!)
+            KFImage(URL(string: "\(viewModel.viewState.imageUrl)/\(image.imageId ?? "")\(imageUrlPath)")!)
               .resizable()
               .backgroundDecode()
-              .onFailure({ error in
-                print("\(index) \(error)")
-              })
+              .cacheMemoryOnly()
               .resizable()
               .placeholder {
                 Image("brokenImage")

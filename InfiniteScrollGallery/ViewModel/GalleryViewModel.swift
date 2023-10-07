@@ -8,10 +8,11 @@
 import Combine
 import Foundation
 
-struct GalleryViewState {
+struct GalleryViewState: Equatable {
   var isLoading: Bool = false
   var gallery: [Gallery] = []
   var currentPage: Int = 0
+  var imageUrl: String = ""
 }
 
 class GalleryViewModel: ObservableObject {
@@ -53,12 +54,14 @@ class GalleryViewModel: ObservableObject {
             self.viewState.isLoading = false
           case .failure(let error):
             print(error)
+            //TODO: ADD ERROR HANDLING
             self.viewState.isLoading = false
           }
         },
         receiveValue: { [unowned self] result in
           self.viewState.currentPage = result.pagination.currentPage
           self.viewState.gallery.append(contentsOf: result.data)
+          self.viewState.imageUrl = result.config.iiifUrl
         }
       )
       .store(in: &cancellables)
