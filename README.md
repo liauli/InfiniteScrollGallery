@@ -5,10 +5,10 @@ InfiniteScrollGallery is an iOS app that allows you to browse an infinite galler
 
 ## Requirements
 
-- iOS Deployment Target: 17.0
+- iOS Deployment Target: 15.0
 - Xcode 15.0
 - Swift 5.9
-- Tested on iPhone 15
+- Tested on iPhone 15 Simulator (17.0) and iPhone 13 Pro (16.3.1)
   
 ## Setup
 
