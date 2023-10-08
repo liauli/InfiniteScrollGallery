@@ -32,9 +32,15 @@ class UsecaseProvider {
   static let instance = UsecaseProvider()
 
   func provideFetchGallery() -> FetchGalleryImpl {
-    let currencyRepository = repositoryProvider.provideGalleryRepository()
+    let galleryRepository = repositoryProvider.provideGalleryRepository()
 
-    return FetchGalleryImpl(currencyRepository)
+    return FetchGalleryImpl(galleryRepository)
+  }
+  
+  func provideSearchGallery() -> SearchGalleryImpl {
+    let galleryRepository = repositoryProvider.provideGalleryRepository()
+
+    return SearchGalleryImpl(galleryRepository)
   }
 }
 
@@ -45,8 +51,9 @@ class ViewModelProvider {
 
   func provideGalleryViewModel() -> GalleryViewModel {
     let fetchGallery = usecaseProvider.provideFetchGallery()
+    let searchGallery = usecaseProvider.provideSearchGallery()
 
-    return GalleryViewModel(fetchGallery)
+    return GalleryViewModel(fetchGallery, searchGallery)
   }
 }
 

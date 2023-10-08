@@ -12,10 +12,13 @@ enum ApiConstant {
 
 protocol APIService {
   func fetchGalleryItems(_ page: Int) -> AnyPublisher<GalleryResponse, Error>
+  func searchGallery(_ query: String, _ page: Int) -> AnyPublisher<GalleryResponse, Error>
 }
 
 class APIServiceImpl: APIService {
-  private let baseApi = "https://api.artic.edu/api/v1/artworks?limit=\(ApiConstant.ApiLimit)"
+  private let baseApi = "https://api.artic.edu/api/v1/artworks"
+  private let apiFields = "fields=id,image_id"
+  private let apiLimit = "limit=\(ApiConstant.ApiLimit)"
   private let urlSession: URLSession
 
   init(_ urlSession: URLSession) {
@@ -23,10 +26,22 @@ class APIServiceImpl: APIService {
   }
 
   func fetchGalleryItems(_ page: Int) -> AnyPublisher<GalleryResponse, Error> {
-    guard let url = URL(string: "\(baseApi)&page=\(page)") else {
+    guard let url = URL(string: "\(baseApi)?\(apiLimit)&\(apiFields)&page=\(page)") else {
       return Fail(error: ApiError.wrongPath).eraseToAnyPublisher()
     }
     
+    return createPublisher(url)
+  }
+  
+  func searchGallery(_ query: String, _ page: Int) -> AnyPublisher<GalleryResponse, Error> {
+    guard let url = URL(string: "\(baseApi)?q=\(query)&\(apiFields)&\(apiLimit)&page=\(page)") else {
+      return Fail(error: ApiError.wrongPath).eraseToAnyPublisher()
+    }
+    
+    return createPublisher(url)
+  }
+  
+  private func createPublisher(_ url: URL) -> AnyPublisher<GalleryResponse, Error> {
     let decoder = JSONDecoder()
     decoder.keyDecodingStrategy = .convertFromSnakeCase
         

@@ -11,6 +11,8 @@ struct GalleryView: View {
   @StateObject private var viewModel: GalleryViewModel = ViewModelProvider.instance
     .provideGalleryViewModel()
   
+  @State var query: String = ""
+  
   private let imageUrlPath = "/full/200,/0/default.jpg"
   
   private let columns = [
@@ -20,6 +22,26 @@ struct GalleryView: View {
   ]
   
   var body: some View {
+    HStack(alignment: .top) {
+      Image(systemName: "magnifyingglass")
+        .resizable()
+        .frame(width: 24, height: 24)
+      TextField("Search", text: $viewModel.queryText)
+        .autocapitalization(.none)
+        .autocorrectionDisabled()
+    }
+      .padding(10)
+      .overlay(
+        RoundedRectangle(cornerRadius: 4.0).stroke(.gray)
+      )
+      .padding(.horizontal)
+      .onChange(of: viewModel.debouncedText, initial: true, { oldValue, newValue in
+        if newValue.isEmpty && !oldValue.isEmpty {
+          viewModel.initialLoad()
+        } else if !newValue.isEmpty {
+          viewModel.search(newValue)
+        }
+      })
       scrollView.onAppear {
         viewModel.initialLoad()
       }

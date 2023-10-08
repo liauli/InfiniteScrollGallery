@@ -3,6 +3,7 @@ import Foundation
 
 protocol GalleryRepository {
   func fetchGalleryItems(_ page: Int) -> AnyPublisher<GalleryResponse, Error>
+  func searchGallery(_ query: String, _ page: Int) -> AnyPublisher<GalleryResponse, Error>
 }
 
 class GalleryRepositoryImpl: GalleryRepository {
@@ -16,5 +17,10 @@ class GalleryRepositoryImpl: GalleryRepository {
 
   func fetchGalleryItems(_ page: Int) -> AnyPublisher<GalleryResponse, Error> {
     return apiService.fetchGalleryItems(page).eraseToAnyPublisher()
+  }
+  
+  
+  func searchGallery(_ query: String, _ page: Int) -> AnyPublisher<GalleryResponse, Error> {
+    return apiService.searchGallery(query, page)
   }
 }

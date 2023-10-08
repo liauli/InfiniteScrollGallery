@@ -1,4 +1,4 @@
-struct Gallery: Codable, Equatable {
+struct Gallery: Codable, Equatable, Hashable {
     let id: Int
     let imageId: String?
 }

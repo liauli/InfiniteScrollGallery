@@ -37,6 +37,8 @@
 		0AFDE6632AD059C000871891 /* FetchGalleryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFDE6622AD059C000871891 /* FetchGalleryTest.swift */; };
 		0AFDE6652AD059CC00871891 /* MockGalleryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFDE6642AD059CC00871891 /* MockGalleryRepository.swift */; };
 		0AFDE6682AD05BEF00871891 /* MockFetchGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFDE6672AD05BEF00871891 /* MockFetchGallery.swift */; };
+		0AFDE66A2AD109E800871891 /* SearchGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFDE6692AD109E800871891 /* SearchGallery.swift */; };
+		0AFDE66D2AD1197200871891 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFDE66C2AD1197200871891 /* Array.swift */; };
 		59160A40C38A71B0B7A4A698 /* Pods_InfiniteScrollGalleryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C280635BA634DC16C5DBEFC2 /* Pods_InfiniteScrollGalleryTests.framework */; };
 		709A3A5A8C14C94F65006249 /* Pods_InfiniteScrollGallery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7799BFC9F72CB0086FF2D5C9 /* Pods_InfiniteScrollGallery.framework */; };
 		8F865E9DB1941B292D8A1D2A /* Pods_InfiniteScrollGallery_InfiniteScrollGalleryUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67063C23D286EB0FF895667C /* Pods_InfiniteScrollGallery_InfiniteScrollGalleryUITests.framework */; };
@@ -93,6 +95,8 @@
 		0AFDE6622AD059C000871891 /* FetchGalleryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchGalleryTest.swift; sourceTree = "<group>"; };
 		0AFDE6642AD059CC00871891 /* MockGalleryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGalleryRepository.swift; sourceTree = "<group>"; };
 		0AFDE6672AD05BEF00871891 /* MockFetchGallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFetchGallery.swift; sourceTree = "<group>"; };
+		0AFDE6692AD109E800871891 /* SearchGallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGallery.swift; sourceTree = "<group>"; };
+		0AFDE66C2AD1197200871891 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		4D2EEBA1A74D5FC1E31604FF /* Pods-InfiniteScrollGallery.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InfiniteScrollGallery.release.xcconfig"; path = "Target Support Files/Pods-InfiniteScrollGallery/Pods-InfiniteScrollGallery.release.xcconfig"; sourceTree = "<group>"; };
 		67063C23D286EB0FF895667C /* Pods_InfiniteScrollGallery_InfiniteScrollGalleryUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InfiniteScrollGallery_InfiniteScrollGalleryUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7799BFC9F72CB0086FF2D5C9 /* Pods_InfiniteScrollGallery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InfiniteScrollGallery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -157,6 +161,7 @@
 		0A3AA0D92ACFBBD800DDF176 /* InfiniteScrollGallery */ = {
 			isa = PBXGroup;
 			children = (
+				0AFDE66B2AD1196700871891 /* Extension */,
 				0A3AA1182ACFC0DE00DDF176 /* Dependency */,
 				0A3AA1122ACFC05900DDF176 /* Domain */,
 				0A3AA1092ACFBC4300DDF176 /* Model */,
@@ -242,6 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				0A3AA1132ACFC06400DDF176 /* FetchGallery.swift */,
+				0AFDE6692AD109E800871891 /* SearchGallery.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -339,6 +345,14 @@
 				0AFDE6672AD05BEF00871891 /* MockFetchGallery.swift */,
 			);
 			path = Domain;
+			sourceTree = "<group>";
+		};
+		0AFDE66B2AD1196700871891 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				0AFDE66C2AD1197200871891 /* Array.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		C4716D53B8F0BD2938DCE0DD /* Frameworks */ = {
@@ -606,11 +620,13 @@
 				0A3AA0DD2ACFBBD800DDF176 /* ContentView.swift in Sources */,
 				0A3AA1082ACFBC2000DDF176 /* APIService.swift in Sources */,
 				0A3AA10D2ACFBDE700DDF176 /* Pagination.swift in Sources */,
+				0AFDE66A2AD109E800871891 /* SearchGallery.swift in Sources */,
 				0A3AA1112ACFBFB000DDF176 /* GalleryRepository.swift in Sources */,
 				0A3AA0DB2ACFBBD800DDF176 /* InfiniteScrollGalleryApp.swift in Sources */,
 				0AFDE6462AD0514B00871891 /* Config.swift in Sources */,
 				0A3AA10F2ACFBDF300DDF176 /* Gallery.swift in Sources */,
 				0A3AA11A2ACFC0F200DDF176 /* ServiceProvider.swift in Sources */,
+				0AFDE66D2AD1197200871891 /* Array.swift in Sources */,
 				0A3AA11D2ACFC17500DDF176 /* GalleryViewModel.swift in Sources */,
 				0A3AA11F2ACFC2EB00DDF176 /* GalleryView.swift in Sources */,
 				0A3AA10B2ACFBC5200DDF176 /* GalleryResponse.swift in Sources */,
