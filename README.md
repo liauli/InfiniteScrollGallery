@@ -49,6 +49,18 @@ Press Command+R to run the project.
 The InfiniteScrollGallery project uses a public API (https://api.artic.edu/docs/) to fetch images. 
 The API sometimes returns the same response regardless of the query, which is something that is outside of our control.
 
+### Example when API returns same response
+
+1. Normal API (https://api.artic.edu/api/v1/artworks?fields=id,image_id&limit=15&page=1)
+   
+![Screenshot 2023-10-08 at 11 45 55](https://github.com/liauli/InfiniteScrollGallery/assets/16285098/14163d56-fccd-4f18-b227-32651aab570c)
+
+2. API with query "cat" (https://api.artic.edu/api/v1/artworks?q=cat&fields=id,image_id&limit=15&page=1)
+   
+![Screenshot 2023-10-08 at 11 46 08](https://github.com/liauli/InfiniteScrollGallery/assets/16285098/149f4928-3dcd-44c6-ae41-21ee6e112937)
+
+Notice that the ids and image_ids has exactly same value
+
 ## Contributing
 
 If you have any suggestions or bug reports, please feel free to create a pull request on GitHub.
