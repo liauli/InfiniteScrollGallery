@@ -51,8 +51,8 @@ struct GalleryView: View {
       RoundedRectangle(cornerRadius: 4.0).stroke(.gray)
     )
     .padding(.horizontal)
-    .onChange(of: viewModel.debouncedText, initial: true, { oldValue, newValue in
-      if newValue.isEmpty && !oldValue.isEmpty {
+    .onChange(of: viewModel.debouncedText, perform: { newValue in
+      if newValue.isEmpty {
         viewModel.initialLoad()
       } else if !newValue.isEmpty {
         viewModel.search(newValue)
