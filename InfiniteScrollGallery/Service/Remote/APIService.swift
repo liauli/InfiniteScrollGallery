@@ -6,10 +6,6 @@ enum ApiError: Error {
   case failToDecode
 }
 
-enum ApiConstant {
-    static let ApiLimit = 15
-}
-
 protocol APIService {
   func fetchGalleryItems(_ page: Int) -> AnyPublisher<GalleryResponse, Error>
   func searchGallery(_ query: String, _ page: Int) -> AnyPublisher<GalleryResponse, Error>
@@ -37,7 +33,6 @@ class APIServiceImpl: APIService {
     guard let url = URL(string: "\(baseApi)?q=\(query)&\(apiFields)&\(apiLimit)&page=\(page)") else {
       return Fail(error: ApiError.wrongPath).eraseToAnyPublisher()
     }
-    
     return createPublisher(url)
   }
   

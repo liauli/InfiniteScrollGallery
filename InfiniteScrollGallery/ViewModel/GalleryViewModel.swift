@@ -8,15 +8,6 @@
 import Combine
 import Foundation
 
-struct GalleryViewState: Equatable, Hashable {
-  var isLoading: Bool = false
-  var gallery: [Gallery] = []
-  var currentPage: Int = 0
-  var imageUrl: String = ""
-  var isSearchMode: Bool = false
-  var query: String = ""
-}
-
 class GalleryViewModel: ObservableObject {
   private let fetchGallery: FetchGallery
   private let searchGallery: SearchGallery
@@ -57,6 +48,7 @@ class GalleryViewModel: ObservableObject {
     }
     
     if id == viewState.gallery.last?.id {
+      
       if viewState.isSearchMode {
         search(viewState.query, viewState.currentPage + 1)
       } else {
@@ -67,12 +59,12 @@ class GalleryViewModel: ObservableObject {
   
   private func loadData(_ page: Int) {
     if viewState.isSearchMode {
-      viewState.currentPage = 0
-      viewState.isSearchMode = false
-      viewState.gallery.removeAll()
+      viewState.update(.resetGallery)
+      viewState.update(.resetSearchMode)
     }
     
-    viewState.isLoading = true
+    viewState.update(.showLoading)
+    
     fetchGallery
       .execute(page)
       .receive(on: RunLoop.main)
@@ -80,19 +72,15 @@ class GalleryViewModel: ObservableObject {
         receiveCompletion: { [weak self] completion in
           switch completion {
           case .finished:
-            self?.viewState.isLoading = false
-          case .failure(let error):
-            print(error)
-            //TODO: ADD ERROR HANDLING
-            self?.viewState.isLoading = false
+            self?.viewState.update(.hideLoading)
+          case .failure(_):
+            self?.viewState.update(.showError)
+            self?.viewState.update(.hideLoading)
           }
         },
-        receiveValue: { [weak self] result in
-          let uniqueElements = result.data.filter { self?.viewState.gallery.contains($0) == false }
-          self?.viewState.gallery.append(contentsOf: uniqueElements)
-          self?.viewState.currentPage = result.pagination.currentPage
-          self?.viewState.gallery = self?.viewState.gallery.removeDuplicates() ?? []
-          self?.viewState.imageUrl = result.config.iiifUrl
+        receiveValue: { [weak self] response in
+          self?.viewState.update(.hideLoading)
+          self?.viewState.update(.addItems(response))
         }
       )
       .store(in: &cancellables)
@@ -101,12 +89,11 @@ class GalleryViewModel: ObservableObject {
   func search(_ query: String, _ page: Int = 1) {
     if query.isEmpty { return }
     
-    viewState.isLoading = true
+    viewState.update(.showLoading)
     
     if !viewState.isSearchMode || viewState.query != query {
-      viewState.gallery.removeAll()
-      viewState.isSearchMode = true
-      viewState.currentPage = 0
+      viewState.update(.resetGallery)
+      viewState.update(.startSearchMode)
     }
     
     searchGallery
@@ -117,19 +104,15 @@ class GalleryViewModel: ObservableObject {
         receiveCompletion: { [weak self] completion in
           switch completion {
           case .finished:
-            self?.viewState.isLoading = false
-          case .failure(let error):
-            print(error)
-            //TODO: ADD ERROR HANDLING
-            self?.viewState.isLoading = false
+            self?.viewState.update(.hideLoading)
+          case .failure(_):
+            self?.viewState.update(.showError)
+            self?.viewState.update(.hideLoading)
           }
         },
         receiveValue: { [weak self] result in
-          let uniqueElements = result.data.filter { self?.viewState.gallery.contains($0) == false }
-          self?.viewState.gallery.append(contentsOf: uniqueElements)
-          self?.viewState.query = query
-          self?.viewState.currentPage = result.pagination.currentPage
-          self?.viewState.imageUrl = result.config.iiifUrl
+          self?.viewState.update(.hideLoading)
+          self?.viewState.update(.addItems(result, query))
         }
       )
       .store(in: &cancellables)

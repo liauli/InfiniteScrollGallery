@@ -12,8 +12,13 @@ import Foundation
 
 class MockAPIService: APIService {
   var whenFetchGalleryItems: AnyPublisher<GalleryResponse, Error>!
+  var searchGalleryItems: AnyPublisher<GalleryResponse, Error>!
 
   func fetchGalleryItems(_ page: Int) -> AnyPublisher<GalleryResponse, Error> {
+    return whenFetchGalleryItems
+  }
+  
+  func searchGallery(_ query: String, _ page: Int) -> AnyPublisher<InfiniteScrollGallery.GalleryResponse, Error> {
     return whenFetchGalleryItems
   }
 }

@@ -9,9 +9,9 @@ import Foundation
 
 @testable import InfiniteScrollGallery
 
-func createGalleryResponse() -> GalleryResponse {
+func createGalleryResponse(_ page: Int = 1) -> GalleryResponse {
   return GalleryResponse(
-    pagination: createPagination(),
+    pagination: createPagination(page),
     data: createGalleryItems(),
     config: createConfig()
   )
@@ -25,13 +25,13 @@ func createGalleryItems() -> [Gallery] {
   ]
 }
 
-func createPagination() -> Pagination {
+func createPagination(_ page: Int) -> Pagination {
   return Pagination(
     total: 1,
     limit: 20,
     offset: 2,
     totalPages: 100,
-    currentPage: 2
+    currentPage: page
   )
 }
 
@@ -40,5 +40,5 @@ func createConfig() -> Config {
 }
 
 func createGallery(imageId: String? = randomString(2)) -> Gallery {
-  return Gallery(id: 1, imageId: imageId)
+  return Gallery(id: Int.random(in: 0..<100), imageId: imageId)
 }
