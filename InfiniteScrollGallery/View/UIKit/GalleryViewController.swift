@@ -19,7 +19,7 @@ class GalleryViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    view.backgroundColor = .lightGray
+    view.backgroundColor = .systemBackground
     view.addSubview(galleryView)
     galleryView.translatesAutoresizingMaskIntoConstraints = false
     
@@ -43,6 +43,7 @@ class GalleryViewController: UIViewController {
   private func render(_ state: GalleryViewState) {
     self.gallery = state.gallery
     self.galleryView.gridView.reloadData()
+    self.galleryView.loadingView.isHidden = !state.isLoading
   }
 }
 

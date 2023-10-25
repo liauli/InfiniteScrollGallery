@@ -28,6 +28,8 @@ class GalleryUIView: UIView {
     return collectionView
   }()
   
+  let loadingView: UIActivityIndicatorView = UIActivityIndicatorView()
+  
   private var gallery: [Gallery] = []
   
   override init(frame: CGRect) {
@@ -35,18 +37,27 @@ class GalleryUIView: UIView {
     
     addSubview(textField)
     addSubview(gridView)
+    addSubview(loadingView)
     
     textField.translatesAutoresizingMaskIntoConstraints = false
     gridView.translatesAutoresizingMaskIntoConstraints = false
+    loadingView.translatesAutoresizingMaskIntoConstraints = false
+    
+    loadingView.startAnimating()
 
     NSLayoutConstraint.activate([
       textField.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 10),
       textField.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 10),
       textField.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -10),
+      
+      
+      loadingView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 10),
+      loadingView.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
+      
       gridView.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 10),
       gridView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
       gridView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-      gridView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
+      gridView.bottomAnchor.constraint(equalTo: loadingView.topAnchor, constant: -10)
     ])
   }
   
