@@ -23,6 +23,11 @@
 		0A3AA11A2ACFC0F200DDF176 /* ServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3AA1192ACFC0F200DDF176 /* ServiceProvider.swift */; };
 		0A3AA11D2ACFC17500DDF176 /* GalleryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3AA11C2ACFC17500DDF176 /* GalleryViewModel.swift */; };
 		0A3AA11F2ACFC2EB00DDF176 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3AA11E2ACFC2EB00DDF176 /* GalleryView.swift */; };
+		0ADBC1072AE80BBA008639D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADBC1062AE80BBA008639D3 /* AppDelegate.swift */; };
+		0ADBC1092AE80BC8008639D3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADBC1082AE80BC8008639D3 /* SceneDelegate.swift */; };
+		0ADBC10B2AE80C02008639D3 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADBC10A2AE80C02008639D3 /* GalleryViewController.swift */; };
+		0ADBC10E2AE8BFBB008639D3 /* GalleryUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADBC10D2AE8BFBB008639D3 /* GalleryUIView.swift */; };
+		0ADBC1102AE8C003008639D3 /* GalleryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADBC10F2AE8C003008639D3 /* GalleryCell.swift */; };
 		0AFDE6462AD0514B00871891 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFDE6452AD0514B00871891 /* Config.swift */; };
 		0AFDE6482AD0525F00871891 /* ApiServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFDE6472AD0525F00871891 /* ApiServiceTest.swift */; };
 		0AFDE64C2AD052A900871891 /* JsonHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFDE64B2AD052A900871891 /* JsonHelper.swift */; };
@@ -90,6 +95,12 @@
 		0A3AA1192ACFC0F200DDF176 /* ServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProvider.swift; sourceTree = "<group>"; };
 		0A3AA11C2ACFC17500DDF176 /* GalleryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewModel.swift; sourceTree = "<group>"; };
 		0A3AA11E2ACFC2EB00DDF176 /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
+		0ADBC1062AE80BBA008639D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		0ADBC1082AE80BC8008639D3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		0ADBC10A2AE80C02008639D3 /* GalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
+		0ADBC10C2AE80D12008639D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		0ADBC10D2AE8BFBB008639D3 /* GalleryUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryUIView.swift; sourceTree = "<group>"; };
+		0ADBC10F2AE8C003008639D3 /* GalleryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCell.swift; sourceTree = "<group>"; };
 		0AFDE6452AD0514B00871891 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		0AFDE6472AD0525F00871891 /* ApiServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiServiceTest.swift; sourceTree = "<group>"; };
 		0AFDE64B2AD052A900871891 /* JsonHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonHelper.swift; sourceTree = "<group>"; };
@@ -179,6 +190,7 @@
 		0A3AA0D92ACFBBD800DDF176 /* InfiniteScrollGallery */ = {
 			isa = PBXGroup;
 			children = (
+				0ADBC10C2AE80D12008639D3 /* Info.plist */,
 				0AFDE6742AD26CC300871891 /* Constant */,
 				0AFDE66B2AD1196700871891 /* Extension */,
 				0A3AA1182ACFC0DE00DDF176 /* Dependency */,
@@ -191,6 +203,8 @@
 				0A3AA0DC2ACFBBD800DDF176 /* ContentView.swift */,
 				0A3AA0DE2ACFBBDA00DDF176 /* Assets.xcassets */,
 				0A3AA0E02ACFBBDA00DDF176 /* Preview Content */,
+				0ADBC1062AE80BBA008639D3 /* AppDelegate.swift */,
+				0ADBC1082AE80BC8008639D3 /* SceneDelegate.swift */,
 			);
 			path = InfiniteScrollGallery;
 			sourceTree = "<group>";
@@ -274,7 +288,8 @@
 		0A3AA1152ACFC0D300DDF176 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				0A3AA11E2ACFC2EB00DDF176 /* GalleryView.swift */,
+				0ADBC1052AE80AFB008639D3 /* UIKit */,
+				0ADBC1042AE80AED008639D3 /* SwiftUI */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -299,6 +314,24 @@
 				0AFDE6722AD26C6A00871891 /* GalleryAction.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		0ADBC1042AE80AED008639D3 /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				0A3AA11E2ACFC2EB00DDF176 /* GalleryView.swift */,
+			);
+			path = SwiftUI;
+			sourceTree = "<group>";
+		};
+		0ADBC1052AE80AFB008639D3 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				0ADBC10A2AE80C02008639D3 /* GalleryViewController.swift */,
+				0ADBC10D2AE8BFBB008639D3 /* GalleryUIView.swift */,
+				0ADBC10F2AE8C003008639D3 /* GalleryCell.swift */,
+			);
+			path = UIKit;
 			sourceTree = "<group>";
 		};
 		0AFDE6492AD0528200871891 /* Service */ = {
@@ -652,11 +685,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0ADBC1072AE80BBA008639D3 /* AppDelegate.swift in Sources */,
 				0AFDE6762AD26CCE00871891 /* ApiConstant.swift in Sources */,
 				0A3AA0DD2ACFBBD800DDF176 /* ContentView.swift in Sources */,
 				0AFDE66F2AD2682300871891 /* GalleryViewState.swift in Sources */,
 				0AFDE6732AD26C6A00871891 /* GalleryAction.swift in Sources */,
 				0AFDE67C2AD2BE5300871891 /* RepositoryProvider.swift in Sources */,
+				0ADBC1092AE80BC8008639D3 /* SceneDelegate.swift in Sources */,
 				0A3AA1082ACFBC2000DDF176 /* APIService.swift in Sources */,
 				0A3AA10D2ACFBDE700DDF176 /* Pagination.swift in Sources */,
 				0AFDE66A2AD109E800871891 /* SearchGallery.swift in Sources */,
@@ -666,13 +701,16 @@
 				0AFDE6462AD0514B00871891 /* Config.swift in Sources */,
 				0A3AA10F2ACFBDF300DDF176 /* Gallery.swift in Sources */,
 				0A3AA11A2ACFC0F200DDF176 /* ServiceProvider.swift in Sources */,
+				0ADBC1102AE8C003008639D3 /* GalleryCell.swift in Sources */,
 				0AFDE66D2AD1197200871891 /* Array.swift in Sources */,
 				0A3AA11D2ACFC17500DDF176 /* GalleryViewModel.swift in Sources */,
 				0AFDE6802AD2BE6300871891 /* ViewModelProvider.swift in Sources */,
 				0A3AA11F2ACFC2EB00DDF176 /* GalleryView.swift in Sources */,
 				0AFDE6712AD26C6100871891 /* GalleryErrorState.swift in Sources */,
+				0ADBC10B2AE80C02008639D3 /* GalleryViewController.swift in Sources */,
 				0A3AA10B2ACFBC5200DDF176 /* GalleryResponse.swift in Sources */,
 				0A3AA1142ACFC06400DDF176 /* FetchGallery.swift in Sources */,
+				0ADBC10E2AE8BFBB008639D3 /* GalleryUIView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -854,7 +892,7 @@
 				DEVELOPMENT_TEAM = 25X49278XB;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = InfiniteScrollGallery/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -884,7 +922,7 @@
 				DEVELOPMENT_TEAM = 25X49278XB;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = InfiniteScrollGallery/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-@main
+//@main
 struct InfiniteScrollGalleryApp: App {
     var body: some Scene {
         WindowGroup {
