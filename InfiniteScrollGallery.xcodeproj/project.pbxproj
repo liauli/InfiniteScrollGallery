@@ -28,6 +28,8 @@
 		0ADBC10B2AE80C02008639D3 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADBC10A2AE80C02008639D3 /* GalleryViewController.swift */; };
 		0ADBC10E2AE8BFBB008639D3 /* GalleryUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADBC10D2AE8BFBB008639D3 /* GalleryUIView.swift */; };
 		0ADBC1102AE8C003008639D3 /* GalleryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADBC10F2AE8C003008639D3 /* GalleryCell.swift */; };
+		0ADBC1142AE96496008639D3 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADBC1132AE96496008639D3 /* UITextField.swift */; };
+		0ADBC1162AE966E9008639D3 /* UIControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADBC1152AE966E9008639D3 /* UIControl.swift */; };
 		0AFDE6462AD0514B00871891 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFDE6452AD0514B00871891 /* Config.swift */; };
 		0AFDE6482AD0525F00871891 /* ApiServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFDE6472AD0525F00871891 /* ApiServiceTest.swift */; };
 		0AFDE64C2AD052A900871891 /* JsonHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFDE64B2AD052A900871891 /* JsonHelper.swift */; };
@@ -101,6 +103,8 @@
 		0ADBC10C2AE80D12008639D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		0ADBC10D2AE8BFBB008639D3 /* GalleryUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryUIView.swift; sourceTree = "<group>"; };
 		0ADBC10F2AE8C003008639D3 /* GalleryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCell.swift; sourceTree = "<group>"; };
+		0ADBC1132AE96496008639D3 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
+		0ADBC1152AE966E9008639D3 /* UIControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIControl.swift; sourceTree = "<group>"; };
 		0AFDE6452AD0514B00871891 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		0AFDE6472AD0525F00871891 /* ApiServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiServiceTest.swift; sourceTree = "<group>"; };
 		0AFDE64B2AD052A900871891 /* JsonHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonHelper.swift; sourceTree = "<group>"; };
@@ -411,6 +415,8 @@
 			isa = PBXGroup;
 			children = (
 				0AFDE66C2AD1197200871891 /* Array.swift */,
+				0ADBC1132AE96496008639D3 /* UITextField.swift */,
+				0ADBC1152AE966E9008639D3 /* UIControl.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -687,6 +693,7 @@
 			files = (
 				0ADBC1072AE80BBA008639D3 /* AppDelegate.swift in Sources */,
 				0AFDE6762AD26CCE00871891 /* ApiConstant.swift in Sources */,
+				0ADBC1142AE96496008639D3 /* UITextField.swift in Sources */,
 				0A3AA0DD2ACFBBD800DDF176 /* ContentView.swift in Sources */,
 				0AFDE66F2AD2682300871891 /* GalleryViewState.swift in Sources */,
 				0AFDE6732AD26C6A00871891 /* GalleryAction.swift in Sources */,
@@ -705,6 +712,7 @@
 				0AFDE66D2AD1197200871891 /* Array.swift in Sources */,
 				0A3AA11D2ACFC17500DDF176 /* GalleryViewModel.swift in Sources */,
 				0AFDE6802AD2BE6300871891 /* ViewModelProvider.swift in Sources */,
+				0ADBC1162AE966E9008639D3 /* UIControl.swift in Sources */,
 				0A3AA11F2ACFC2EB00DDF176 /* GalleryView.swift in Sources */,
 				0AFDE6712AD26C6100871891 /* GalleryErrorState.swift in Sources */,
 				0ADBC10B2AE80C02008639D3 /* GalleryViewController.swift in Sources */,

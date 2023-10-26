@@ -50,7 +50,6 @@ class GalleryUIView: UIView {
       textField.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 10),
       textField.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -10),
       
-      
       loadingView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 10),
       loadingView.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
       

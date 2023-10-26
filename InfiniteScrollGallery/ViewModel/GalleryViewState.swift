@@ -28,6 +28,7 @@ struct GalleryViewState: Equatable, Hashable {
       isSearchMode = true
     case .resetSearchMode:
       isSearchMode = false
+      query = ""
     case .addItems(let response, let query):
       let uniqueElements = response.data.filter { gallery.contains($0) == false }
       gallery.append(contentsOf: uniqueElements)

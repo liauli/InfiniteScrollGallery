@@ -18,15 +18,6 @@ class GalleryViewModel: ObservableObject {
   
   @Published var queryText: String = ""
   @Published var debouncedText: String = ""
-
-  init(
-    _ fetchGallery: FetchGallery,
-    _ searchGallery: SearchGallery
-  ) {
-    self.fetchGallery = fetchGallery
-    self.searchGallery = searchGallery
-    setDebouncedText()
-  }
   
   private func setDebouncedText() {
     $queryText
@@ -36,6 +27,15 @@ class GalleryViewModel: ObservableObject {
           self?.debouncedText = value
       })
       .store(in: &cancellables)
+  }
+  
+  init(
+    _ fetchGallery: FetchGallery,
+    _ searchGallery: SearchGallery
+  ) {
+    self.fetchGallery = fetchGallery
+    self.searchGallery = searchGallery
+    setDebouncedText()
   }
 
   func initialLoad() {
@@ -48,7 +48,6 @@ class GalleryViewModel: ObservableObject {
     }
     
     if id == viewState.gallery.last?.id {
-      
       if viewState.isSearchMode {
         search(viewState.query, viewState.currentPage + 1)
       } else {
@@ -95,7 +94,6 @@ class GalleryViewModel: ObservableObject {
       viewState.update(.resetGallery)
       viewState.update(.startSearchMode)
     }
-    
     searchGallery
       .execute(query, page)
       .receive(on: RunLoop.main)
