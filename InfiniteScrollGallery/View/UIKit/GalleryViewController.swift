@@ -10,6 +10,7 @@ import UIKit
 
 class GalleryViewController: UIViewController {
   private var galleryView: GalleryUIView = GalleryUIView()
+  private var loadingView: LoadingView = LoadingView()
   
   private var viewModel = ViewModelProvider.instance.provideGalleryViewModel()
   private var cancellables: Set<AnyCancellable> = []
@@ -20,7 +21,6 @@ class GalleryViewController: UIViewController {
     super.viewDidLoad()
     view.backgroundColor = .systemBackground
     view.addSubview(galleryView)
-    galleryView.translatesAutoresizingMaskIntoConstraints = false
     
     setupViews()
     setupLayoutConstraint()
@@ -36,6 +36,8 @@ class GalleryViewController: UIViewController {
   }
   
   private func setupViews() {
+    galleryView.translatesAutoresizingMaskIntoConstraints = false
+    
     galleryView.gridView.dataSource = self
     galleryView.gridView.delegate = self
     
@@ -64,7 +66,18 @@ class GalleryViewController: UIViewController {
   private func render(_ state: GalleryViewState) {
     self.gallery = state.gallery
     self.galleryView.gridView.reloadData()
-    self.galleryView.loadingView.isHidden = !state.isLoading
+    
+    if state.error == .errorEmptyData {
+      self.galleryView.showError("Failed to load data") {
+        if self.galleryView.textField.text?.isEmpty == false {
+          self.viewModel.search(self.galleryView.textField.text ?? "")
+        } else {
+          self.viewModel.initialLoad()
+        }
+      }
+    } else if state.error == nil {
+      self.galleryView.hideError()
+    }
   }
 }
 
@@ -97,5 +110,14 @@ extension GalleryViewController: UICollectionViewDataSource, UICollectionViewDel
       let itemId = gallery[indexPath.row].id
       viewModel.checkIfLoadNext(itemId)
     }
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+    if kind == UICollectionView.elementKindSectionFooter {
+      let cell = galleryView.gridView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "loading", for: indexPath)
+      return cell
+    }
+    
+    return UICollectionReusableView()
   }
 }

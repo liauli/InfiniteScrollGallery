@@ -21,14 +21,16 @@ class GalleryUIView: UIView {
     let widthPerItem = (UIScreen.main.bounds.width  - spacing * 2) / 3
     let size = CGSize(width: widthPerItem, height: widthPerItem)
     layout.itemSize = size
+    layout.footerReferenceSize = CGSize(width: UIScreen.main.bounds.width - spacing * 2, height: 50)
     
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
     collectionView.register(GalleryCell.self, forCellWithReuseIdentifier: "Cell")
+    collectionView.register(LoadingView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "loading")
     
     return collectionView
   }()
-  
-  let loadingView: UIActivityIndicatorView = UIActivityIndicatorView()
+
+  let errorView = ErrorView()
   
   private var gallery: [Gallery] = []
   
@@ -37,31 +39,46 @@ class GalleryUIView: UIView {
     
     addSubview(textField)
     addSubview(gridView)
-    addSubview(loadingView)
+    addSubview(errorView)
+    
+    errorView.isHidden = true
     
     textField.translatesAutoresizingMaskIntoConstraints = false
     gridView.translatesAutoresizingMaskIntoConstraints = false
-    loadingView.translatesAutoresizingMaskIntoConstraints = false
-    
-    loadingView.startAnimating()
+    errorView.translatesAutoresizingMaskIntoConstraints = false
 
     NSLayoutConstraint.activate([
       textField.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 10),
       textField.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 10),
       textField.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -10),
       
-      loadingView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 10),
-      loadingView.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
-      
       gridView.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 10),
       gridView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
       gridView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-      gridView.bottomAnchor.constraint(equalTo: loadingView.topAnchor, constant: -10)
+      gridView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 10),
+      
+      errorView.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 10),
+      errorView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+      errorView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+      errorView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 10),
     ])
+    
   }
   
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
+  }
+  
+  func showError(_ message: String, _ action: @escaping () -> Void) {
+    gridView.isHidden = true
+    errorView.isHidden = false
+    errorView.set(message: message)
+    errorView.action = action
+  }
+  
+  func hideError() {
+    gridView.isHidden = false
+    errorView.isHidden = true
   }
   
 }
