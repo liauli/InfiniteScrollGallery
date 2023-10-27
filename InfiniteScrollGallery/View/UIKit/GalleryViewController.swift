@@ -106,6 +106,11 @@ class GalleryViewController: UIViewController {
   
     return lastCell
   }
+  
+  override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    super.viewWillTransition(to: size, with: coordinator)
+    galleryView.gridView.collectionViewLayout.invalidateLayout()
+  }
 }
 
 extension GalleryViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -155,7 +160,8 @@ extension GalleryViewController: UICollectionViewDataSource, UICollectionViewDel
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     let spacing = (galleryView.gridView.collectionViewLayout as? UICollectionViewFlowLayout)?.minimumInteritemSpacing ?? 0
     let areaWidth = UIScreen.main.bounds.width  - spacing * 2
-    let defaultGridItemSize = areaWidth / 3
+    let columns = CGFloat(UIDevice.current.orientation.isLandscape ? 6 : 3)
+    let defaultGridItemSize = areaWidth / columns
     let widthPerItem = indexPath.row != gallery.count ? defaultGridItemSize : areaWidth
     let size = CGSize(width: widthPerItem, height: defaultGridItemSize)
     
