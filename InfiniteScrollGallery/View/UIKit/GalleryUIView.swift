@@ -21,11 +21,10 @@ class GalleryUIView: UIView {
     let widthPerItem = (UIScreen.main.bounds.width  - spacing * 2) / 3
     let size = CGSize(width: widthPerItem, height: widthPerItem)
     layout.itemSize = size
-    layout.footerReferenceSize = CGSize(width: UIScreen.main.bounds.width - spacing * 2, height: 50)
     
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
     collectionView.register(GalleryCell.self, forCellWithReuseIdentifier: "Cell")
-    collectionView.register(LoadingView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "loading")
+    collectionView.register(LoadingViewCell.self, forCellWithReuseIdentifier: "loadingCell")
     
     return collectionView
   }()

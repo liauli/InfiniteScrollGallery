@@ -9,7 +9,7 @@ import UIKit
 
 class ErrorView: UIView {
   private let messageLabel: UILabel = UILabel()
-  private let refreshButton: UIButton = UIButton()
+  let refreshButton: UIButton = UIButton()
 
   var action: (() -> Void)?
 
@@ -44,6 +44,7 @@ class ErrorView: UIView {
   }
 
   @objc func refreshButtonTapped() {
+    print("button tap")
     action?()
   }
 }
