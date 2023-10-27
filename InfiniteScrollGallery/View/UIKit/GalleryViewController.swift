@@ -40,6 +40,8 @@ class GalleryViewController: UIViewController {
     galleryView.gridView.dataSource = self
     galleryView.gridView.delegate = self
     
+    galleryView.textField.delegate = self
+    
     galleryView.textField.textPublisher
       .removeDuplicates()
       .debounce(for: .seconds(0.3), scheduler: DispatchQueue.main)
@@ -133,6 +135,7 @@ extension GalleryViewController: UICollectionViewDataSource, UICollectionViewDel
         return UICollectionViewCell()
       }
       
+      cell.loadingView.startAnimating()
       cell.isUserInteractionEnabled = true
       
       return cell
@@ -155,7 +158,14 @@ extension GalleryViewController: UICollectionViewDataSource, UICollectionViewDel
     let defaultGridItemSize = areaWidth / 3
     let widthPerItem = indexPath.row != gallery.count ? defaultGridItemSize : areaWidth
     let size = CGSize(width: widthPerItem, height: defaultGridItemSize)
-    return size
     
+    return size
+  }
+}
+
+extension GalleryViewController: UITextFieldDelegate {
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    textField.resignFirstResponder()
+    return true
   }
 }

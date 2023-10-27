@@ -44,7 +44,6 @@ class ErrorView: UIView {
   }
 
   @objc func refreshButtonTapped() {
-    print("button tap")
     action?()
   }
 }
