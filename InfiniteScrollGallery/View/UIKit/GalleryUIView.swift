@@ -9,9 +9,14 @@ import UIKit
 
 class GalleryUIView: UIView {
   let textField: UITextField = {
-      let textField = UITextField()
-      textField.placeholder = "Search"
-      return textField
+    let textField = UITextField()
+    let magnifyingGlassView = UIImageView(image: UIImage(systemName: "magnifyingglass"))
+
+    textField.leftView = magnifyingGlassView
+    textField.leftViewMode = .always
+    textField.placeholder = "Type your search here"
+    
+    return textField
   }()
 
   let gridView: UICollectionView = {
