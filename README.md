@@ -3,6 +3,16 @@
 
 InfiniteScrollGallery is an iOS app that allows you to browse an infinite gallery of images. Built using Swift and SwiftUI.
 
+## Using SwiftUI and UIKit
+
+This repository provides two branches for different iOS development approaches:
+
+- **main**: The `main` branch is built using SwiftUI, making it suitable for those who want to explore and work with the SwiftUI framework.
+
+- **uikit**: The `uikit` branch is built using UIKit, a traditional iOS framework. If you prefer using UIKit, switch to this branch for UIKit-based development.
+
+Feel free to choose the branch that aligns with your preferred development framework.
+
 ## Requirements
 
 - iOS Deployment Target: 15.0
